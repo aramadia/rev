@@ -21,8 +21,8 @@ import com.parse.ParseUser;
 public class LoginActivity extends Activity {
 
 	private Button loginButton;
-	private Dialog progressDialog;
   private Button gameButton;
+  private Dialog progressDialog;
 
   @Override
 	protected void onCreate(Bundle savedInstanceState) {
