@@ -22,8 +22,9 @@ public class LoginActivity extends Activity {
 
 	private Button loginButton;
 	private Dialog progressDialog;
+  private Button gameButton;
 
-	@Override
+  @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -37,7 +38,15 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		// Check if there is a currently logged in user
+    gameButton = (Button) findViewById(R.id.game_button);
+    gameButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(LoginActivity.this, GameActivity.class));
+      }
+    });
+
+    // Check if there is a currently logged in user
 		// and they are linked to a Facebook account.
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
