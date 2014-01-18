@@ -7,23 +7,32 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import java.util.Random;
 
 public class GameActivity extends Activity {
 
+  private static Random random = new Random();
+  private static ReactionTimer reactionTimer = new ReactionTimer();
+
   private Button gameButton;
   private LinearLayout gameLayout;
+  private TextView gameTime;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.game);
 
+    gameTime = (TextView) findViewById(R.id.game_time);
+
     gameLayout = ((LinearLayout) findViewById(R.id.game_background));
     gameLayout.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //
+        reactionTimer.endTimer();
+        gameTime.setText(String.valueOf(reactionTimer.getElapsedTime()));
       }
     });
 
@@ -37,9 +46,9 @@ public class GameActivity extends Activity {
           @Override
           public void run() {
             gameLayout.setBackgroundColor(Color.BLUE);
-            Toast.makeText(GameActivity.this, "Runnable!", Toast.LENGTH_LONG).show();
+            reactionTimer.startTimer();
           }
-        }, 1500);
+        }, nextInt(1000, 10000));
       }
     });
   }
@@ -48,4 +57,30 @@ public class GameActivity extends Activity {
   protected void onResume() {
     super.onResume();
   }
+
+  private int nextInt(int low, int high) {
+    return random.nextInt(high - low) + low;
+  }
+
+  private static class ReactionTimer {
+    private long startTime = 0;
+    private long endTime = 0;
+
+    public void startTimer() {
+      startTime = System.nanoTime();
+    }
+
+    public void endTimer() {
+      endTime = System.nanoTime();
+    }
+
+    public long getElapsedTime() {
+      if (startTime == 0 || endTime == 0) {
+        return 0;
+      }
+
+      return endTime - startTime;
+    }
+  }
+
 }
