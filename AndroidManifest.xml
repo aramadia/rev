@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:name=".IntegratingFacebookTutorialApplication" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop" >
             <intent-filter>
@@ -28,12 +28,12 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name=".UserDetailsActivity" 
+            android:name=".activity.UserDetailsActivity"
             android:label="@string/app_name"/>
         <activity android:name="com.facebook.LoginActivity"
                   android:label="@string/app_name" />
         <activity
-                android:name=".GameActivity"
+                android:name=".activity.GameActivity"
                 android:label="@string/app_name"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId" 
             android:value="@string/app_id"/>

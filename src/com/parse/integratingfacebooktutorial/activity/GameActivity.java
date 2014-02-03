@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial;
+package com.parse.integratingfacebooktutorial.activity;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.parse.integratingfacebooktutorial.R;
 
 import java.util.Random;
 

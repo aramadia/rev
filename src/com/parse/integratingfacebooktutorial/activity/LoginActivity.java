@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial;
+package com.parse.integratingfacebooktutorial.activity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +17,8 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
+import com.parse.integratingfacebooktutorial.IntegratingFacebookTutorialApplication;
+import com.parse.integratingfacebooktutorial.R;
 
 public class LoginActivity extends Activity {
 

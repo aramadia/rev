@@ -7,7 +7,7 @@ import com.parse.ParseFacebookUtils;
 
 public class IntegratingFacebookTutorialApplication extends Application {
 
-	static final String TAG = "MyApp";
+	public static final String TAG = "MyApp";
 
 	@Override
 	public void onCreate() {

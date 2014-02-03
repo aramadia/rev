@@ -1,5 +1,7 @@
-package com.parse.integratingfacebooktutorial;
+package com.parse.integratingfacebooktutorial.activity;
 
+import com.parse.integratingfacebooktutorial.IntegratingFacebookTutorialApplication;
+import com.parse.integratingfacebooktutorial.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
