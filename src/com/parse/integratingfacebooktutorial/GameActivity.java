@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 
 public class GameActivity extends Activity {
@@ -34,8 +32,7 @@ public class GameActivity extends Activity {
       @Override
       public void onClick(View v) {
         reactionTimer.endTimer();
-        String format = new SimpleDateFormat("mm:ss:SSS").format(new Date(reactionTimer.getElapsedTimeMs()));
-        gameTime.setText(format);
+        gameTime.setText(reactionTimer.getElapsedTimeMs() + "ms");
       }
     });
 
@@ -82,7 +79,7 @@ public class GameActivity extends Activity {
         return 0;
       }
 
-      return (endTime - startTime) / 1000;
+      return (endTime - startTime) / 1000000L;
     }
   }
 
