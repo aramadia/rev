@@ -11,14 +11,17 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.Timer;
+import com.uwrev.reactiontest.UserManager;
 import com.uwrev.reactiontest.model.RevScore;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.Random;
 
 public class GameActivity extends ReactionBaseActivity {
 
   @Inject Timer reactionTimer;
+  @Inject UserManager userManager;
 
   private static Random random = new Random();
 
@@ -57,6 +60,13 @@ public class GameActivity extends ReactionBaseActivity {
   public void showScore() {
     // Lets submit a dummy score here too.
     RevScore highScore = new RevScore();
+
+    highScore.setScore((int)(Math.random() * 100));
+    highScore.setDate(new Date());
+    highScore.setGameMode("default");
+
+    userManager.reportScore(highScore);
+
 
     startActivity(new Intent(GameActivity.this, ScoreActivity.class));
   }

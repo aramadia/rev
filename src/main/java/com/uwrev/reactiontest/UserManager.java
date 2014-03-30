@@ -40,6 +40,14 @@ public class UserManager {
    */
   public void reportScore(RevScore score) {
 
+    // Assumption, assume the user is logged in
+    if (!user.isAuthenticated()) {
+      Log.e(TAG, "Error; user isn't authenticated");
+    }
+    score.setUserId(user.getObjectId());
+
+    score.saveInBackground();
+
   }
 
   /**
