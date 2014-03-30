@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial.activity;
+package com.uwrev.reactiontest.activity;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.parse.integratingfacebooktutorial.R;
-import com.parse.integratingfacebooktutorial.ReactionTimer;
+import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.ReactionTimer;
 
 import java.util.Random;
 

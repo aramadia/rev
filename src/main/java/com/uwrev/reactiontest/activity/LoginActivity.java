@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial.activity;
+package com.uwrev.reactiontest.activity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,8 +17,8 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
-import com.parse.integratingfacebooktutorial.ReactionTestApplication;
-import com.parse.integratingfacebooktutorial.R;
+import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.ReactionTestApplication;
 
 public class LoginActivity extends Activity {
 

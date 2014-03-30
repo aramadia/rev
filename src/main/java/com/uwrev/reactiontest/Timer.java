@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial;
+package com.uwrev.reactiontest;
 
 import java.util.List;
 

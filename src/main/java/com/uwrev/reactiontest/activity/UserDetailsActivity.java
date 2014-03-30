@@ -1,7 +1,7 @@
-package com.parse.integratingfacebooktutorial.activity;
+package com.uwrev.reactiontest.activity;
 
-import com.parse.integratingfacebooktutorial.ReactionTestApplication;
-import com.parse.integratingfacebooktutorial.R;
+import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.ReactionTestApplication;
 import org.json.JSONException;
 import org.json.JSONObject;
 

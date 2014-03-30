@@ -1,4 +1,4 @@
-package com.parse.integratingfacebooktutorial;
+package com.uwrev.reactiontest;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import com.parse.ParseFacebookUtils;
 
 public class ReactionTestApplication extends Application {
 
-	public static final String TAG = "MyApp";
+	public static final String TAG = "ReactionTestApplication";
 
 	@Override
 	public void onCreate() {
