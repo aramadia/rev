@@ -5,7 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 
-public class IntegratingFacebookTutorialApplication extends Application {
+public class ReactionTestApplication extends Application {
 
 	public static final String TAG = "MyApp";
 

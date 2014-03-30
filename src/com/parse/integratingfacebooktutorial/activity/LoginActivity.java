@@ -17,7 +17,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
-import com.parse.integratingfacebooktutorial.IntegratingFacebookTutorialApplication;
+import com.parse.integratingfacebooktutorial.ReactionTestApplication;
 import com.parse.integratingfacebooktutorial.R;
 
 public class LoginActivity extends Activity {
@@ -80,14 +80,14 @@ public class LoginActivity extends Activity {
 			public void done(ParseUser user, ParseException err) {
 				LoginActivity.this.progressDialog.dismiss();
 				if (user == null) {
-					Log.d(IntegratingFacebookTutorialApplication.TAG,
+					Log.d(ReactionTestApplication.TAG,
 							"Uh oh. The user cancelled the Facebook login.");
 				} else if (user.isNew()) {
-					Log.d(IntegratingFacebookTutorialApplication.TAG,
+					Log.d(ReactionTestApplication.TAG,
 							"User signed up and logged in through Facebook!");
 					showUserDetailsActivity();
 				} else {
-					Log.d(IntegratingFacebookTutorialApplication.TAG,
+					Log.d(ReactionTestApplication.TAG,
 							"User logged in through Facebook!");
 					showUserDetailsActivity();
 				}

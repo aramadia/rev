@@ -1,6 +1,6 @@
 package com.parse.integratingfacebooktutorial.activity;
 
-import com.parse.integratingfacebooktutorial.IntegratingFacebookTutorialApplication;
+import com.parse.integratingfacebooktutorial.ReactionTestApplication;
 import com.parse.integratingfacebooktutorial.R;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -116,18 +116,18 @@ public class UserDetailsActivity extends Activity {
 								// Show the user info
 								updateViewsWithProfileInfo();
 							} catch (JSONException e) {
-								Log.d(IntegratingFacebookTutorialApplication.TAG,
+								Log.d(ReactionTestApplication.TAG,
 										"Error parsing returned user data.");
 							}
 
 						} else if (response.getError() != null) {
 							if ((response.getError().getCategory() == FacebookRequestError.Category.AUTHENTICATION_RETRY)
 									|| (response.getError().getCategory() == FacebookRequestError.Category.AUTHENTICATION_REOPEN_SESSION)) {
-								Log.d(IntegratingFacebookTutorialApplication.TAG,
+								Log.d(ReactionTestApplication.TAG,
 										"The facebook session was invalidated.");
 								onLogoutButtonClicked();
 							} else {
-								Log.d(IntegratingFacebookTutorialApplication.TAG,
+								Log.d(ReactionTestApplication.TAG,
 										"Some other error: "
 												+ response.getError()
 														.getErrorMessage());
@@ -180,7 +180,7 @@ public class UserDetailsActivity extends Activity {
 					userRelationshipView.setText("");
 				}
 			} catch (JSONException e) {
-				Log.d(IntegratingFacebookTutorialApplication.TAG,
+				Log.d(ReactionTestApplication.TAG,
 						"Error parsing saved user data.");
 			}
 

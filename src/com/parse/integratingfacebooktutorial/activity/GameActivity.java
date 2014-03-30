@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.parse.integratingfacebooktutorial.R;
+import com.parse.integratingfacebooktutorial.ReactionTimer;
 
 import java.util.Random;
 
@@ -32,8 +33,8 @@ public class GameActivity extends Activity {
     gameLayout.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        reactionTimer.endTimer();
-        gameTime.setText(reactionTimer.getElapsedTimeMs() + "ms");
+        reactionTimer.stopTimer();
+        gameTime.setText(reactionTimer.getLastTimeMs() + "ms");
       }
     });
 
@@ -61,27 +62,6 @@ public class GameActivity extends Activity {
 
   private int nextInt(int low, int high) {
     return random.nextInt(high - low) + low;
-  }
-
-  private static class ReactionTimer {
-    private long startTime = 0;
-    private long endTime = 0;
-
-    public void startTimer() {
-      startTime = System.nanoTime();
-    }
-
-    public void endTimer() {
-      endTime = System.nanoTime();
-    }
-
-    public long getElapsedTimeMs() {
-      if (startTime == 0 || endTime == 0) {
-        return 0;
-      }
-
-      return (endTime - startTime) / 1000000L;
-    }
   }
 
 }
