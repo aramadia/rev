@@ -1,6 +1,6 @@
 package com.uwrev.reactiontest.activity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,15 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.uwrev.reactiontest.ForApplication;
 import com.uwrev.reactiontest.R;
-import com.uwrev.reactiontest.ReactionTimer;
+import com.uwrev.reactiontest.Timer;
 
+import javax.inject.Inject;
 import java.util.Random;
 
-public class GameActivity extends Activity {
+public class GameActivity extends ReactionBaseActivity {
+
+  @Inject @ForApplication Context application;
+  @Inject Timer reactionTimer;
 
   private static Random random = new Random();
-  private static ReactionTimer reactionTimer = new ReactionTimer();
 
   private Button gameButton, scoreButton;
   private LinearLayout gameLayout;
