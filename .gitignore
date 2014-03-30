@@ -34,7 +34,6 @@ local.properties
  
 # IntelliJ files
 .idea
-*.iml
  
 # OSX files
 .DS_Store
