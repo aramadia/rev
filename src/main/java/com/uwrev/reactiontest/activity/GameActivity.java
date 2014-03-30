@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
@@ -52,6 +53,7 @@ public class GameActivity extends ReactionBaseActivity {
         reactionTimer.startTimer();
       }
     }, nextInt(1000, 10000));
+
   }
 
   @OnClick(R.id.button_score)
