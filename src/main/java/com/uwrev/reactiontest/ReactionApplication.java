@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
+import com.uwrev.reactiontest.model.RevScore;
 import dagger.ObjectGraph;
 import com.parse.*;
 import com.uwrev.reactiontest.model.RevUser;
@@ -28,6 +29,7 @@ public class ReactionApplication extends Application {
 
     // Register parse subclasses
     ParseObject.registerSubclass(RevUser.class);
+    ParseObject.registerSubclass(RevScore.class);
 
     Parse.initialize(this, getString(R.string.parse_application_id),
         getString(R.string.parse_client_key));

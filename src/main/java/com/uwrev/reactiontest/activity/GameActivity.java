@@ -11,6 +11,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.Timer;
+import com.uwrev.reactiontest.model.RevScore;
 
 import javax.inject.Inject;
 import java.util.Random;
@@ -54,6 +55,9 @@ public class GameActivity extends ReactionBaseActivity {
 
   @OnClick(R.id.button_score)
   public void showScore() {
+    // Lets submit a dummy score here too.
+    RevScore highScore = new RevScore();
+
     startActivity(new Intent(GameActivity.this, ScoreActivity.class));
   }
 

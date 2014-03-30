@@ -4,6 +4,7 @@ import android.util.Log;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.uwrev.reactiontest.model.RevScore;
 import com.uwrev.reactiontest.model.RevUser;
 
 import javax.inject.Singleton;
@@ -31,6 +32,14 @@ public class UserManager {
     } else {
       Log.v(TAG, "Reusing user " + user.getUsername());
     }
+  }
+
+  /**
+   * Call this when the user complete a run of scores and we need to submit it to the server.
+   * @param score
+   */
+  public void reportScore(RevScore score) {
+
   }
 
   /**
