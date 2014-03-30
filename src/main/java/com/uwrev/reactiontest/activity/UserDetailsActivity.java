@@ -1,7 +1,7 @@
 package com.uwrev.reactiontest.activity;
 
 import com.uwrev.reactiontest.R;
-import com.uwrev.reactiontest.ReactionTestApplication;
+import com.uwrev.reactiontest.ReactionApplication;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,18 +116,18 @@ public class UserDetailsActivity extends Activity {
 								// Show the user info
 								updateViewsWithProfileInfo();
 							} catch (JSONException e) {
-								Log.d(ReactionTestApplication.TAG,
+								Log.d(ReactionApplication.TAG,
 										"Error parsing returned user data.");
 							}
 
 						} else if (response.getError() != null) {
 							if ((response.getError().getCategory() == FacebookRequestError.Category.AUTHENTICATION_RETRY)
 									|| (response.getError().getCategory() == FacebookRequestError.Category.AUTHENTICATION_REOPEN_SESSION)) {
-								Log.d(ReactionTestApplication.TAG,
+								Log.d(ReactionApplication.TAG,
 										"The facebook session was invalidated.");
 								onLogoutButtonClicked();
 							} else {
-								Log.d(ReactionTestApplication.TAG,
+								Log.d(ReactionApplication.TAG,
 										"Some other error: "
 												+ response.getError()
 														.getErrorMessage());
@@ -180,7 +180,7 @@ public class UserDetailsActivity extends Activity {
 					userRelationshipView.setText("");
 				}
 			} catch (JSONException e) {
-				Log.d(ReactionTestApplication.TAG,
+				Log.d(ReactionApplication.TAG,
 						"Error parsing saved user data.");
 			}
 

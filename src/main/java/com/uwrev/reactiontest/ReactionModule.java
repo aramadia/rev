@@ -10,10 +10,10 @@ import javax.inject.Singleton;
  * Created by Joshua Lauer
  */
 @Module(
-    injects = {GameActivity.class, ReactionTestApplication.class},
+    injects = {GameActivity.class, ReactionApplication.class},
     includes = {AndroidModule.class}
 )
-public class ReactionTestModule {
+public class ReactionModule {
 
   @Provides
   Timer provideReactionTimer() {

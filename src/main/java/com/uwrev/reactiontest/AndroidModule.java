@@ -20,9 +20,9 @@ import static android.content.Context.LOCATION_SERVICE;
  */
 @Module(library = true)
 public class AndroidModule {
-  private final ReactionTestApplication application;
+  private final ReactionApplication application;
 
-  public AndroidModule(ReactionTestApplication application) {
+  public AndroidModule(ReactionApplication application) {
     this.application = application;
   }
 

@@ -18,7 +18,7 @@ import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.uwrev.reactiontest.R;
-import com.uwrev.reactiontest.ReactionTestApplication;
+import com.uwrev.reactiontest.ReactionApplication;
 
 public class LoginActivity extends Activity {
 
@@ -80,14 +80,14 @@ public class LoginActivity extends Activity {
 			public void done(ParseUser user, ParseException err) {
 				LoginActivity.this.progressDialog.dismiss();
 				if (user == null) {
-					Log.d(ReactionTestApplication.TAG,
+					Log.d(ReactionApplication.TAG,
 							"Uh oh. The user cancelled the Facebook login.");
 				} else if (user.isNew()) {
-					Log.d(ReactionTestApplication.TAG,
+					Log.d(ReactionApplication.TAG,
 							"User signed up and logged in through Facebook!");
 					showUserDetailsActivity();
 				} else {
-					Log.d(ReactionTestApplication.TAG,
+					Log.d(ReactionApplication.TAG,
 							"User logged in through Facebook!");
 					showUserDetailsActivity();
 				}

@@ -2,7 +2,7 @@ package com.uwrev.reactiontest.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.uwrev.reactiontest.ReactionTestApplication;
+import com.uwrev.reactiontest.ReactionApplication;
 
 /**
  * Created by Joshua Lauer
@@ -13,6 +13,6 @@ public abstract class ReactionBaseActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     // Perform injection so that when this call returns all dependencies will be available for use.
-    ((ReactionTestApplication) getApplication()).inject(this);
+    ((ReactionApplication) getApplication()).inject(this);
   }
 }

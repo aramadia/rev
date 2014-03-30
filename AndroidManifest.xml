@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name=".ReactionTestApplication" >
+        android:name=".ReactionApplication" >
         <activity
             android:name=".activity.GameActivity"
             android:label="@string/app_name"

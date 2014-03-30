@@ -12,9 +12,9 @@ import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReactionTestApplication extends Application {
+public class ReactionApplication extends Application {
 
-  public static final String TAG = "ReactionTestApplication";
+  public static final String TAG = "ReactionApplication";
 
   @Inject
   UserManager manager;
@@ -45,7 +45,7 @@ public class ReactionTestApplication extends Application {
   protected List<Object> getModules() {
     return Arrays.asList(
         new AndroidModule(this),
-        new ReactionTestModule()
+        new ReactionModule()
     );
   }
 
