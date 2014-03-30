@@ -25,5 +25,10 @@
       android:layout_gravity="center"
       android:text="Start Game"
       />
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Score"
+      android:id="@+id/button_score" android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.uwrev.reactiontest.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,7 +19,7 @@ public class GameActivity extends Activity {
   private static Random random = new Random();
   private static ReactionTimer reactionTimer = new ReactionTimer();
 
-  private Button gameButton;
+  private Button gameButton, scoreButton;
   private LinearLayout gameLayout;
   private TextView gameTime;
 
@@ -51,6 +52,14 @@ public class GameActivity extends Activity {
             reactionTimer.startTimer();
           }
         }, nextInt(1000, 10000));
+      }
+    });
+
+    scoreButton = ((Button) findViewById(R.id.button_score));
+    scoreButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(GameActivity.this, ScoreActivity.class));
       }
     });
   }
