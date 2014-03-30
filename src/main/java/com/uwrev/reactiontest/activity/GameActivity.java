@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import com.uwrev.reactiontest.ForApplication;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.Timer;
@@ -23,49 +25,40 @@ public class GameActivity extends ReactionBaseActivity {
 
   private static Random random = new Random();
 
-  private Button gameButton, scoreButton;
-  private LinearLayout gameLayout;
-  private TextView gameTime;
+  @InjectView(R.id.game_background) LinearLayout gameLayout;
+  @InjectView(R.id.game_time) TextView gameTime;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.game);
 
-    gameTime = (TextView) findViewById(R.id.game_time);
+    ButterKnife.inject(this);
+  }
 
-    gameLayout = ((LinearLayout) findViewById(R.id.game_background));
-    gameLayout.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        reactionTimer.stopTimer();
-        gameTime.setText(reactionTimer.getLastTimeMs() + "ms");
-      }
-    });
+  @OnClick(R.id.game_background)
+  public void updateScore() {
+    reactionTimer.stopTimer();
+    gameTime.setText(reactionTimer.getLastTimeMs() + "ms");
+  }
 
-    gameButton = ((Button) findViewById(R.id.start_game));
-    gameButton.setOnClickListener(new View.OnClickListener() {
+  @OnClick(R.id.button_start_game)
+  public void startGame() {
+    gameLayout.setBackgroundColor(Color.BLACK);
+    Handler handler = new Handler();
+    handler.postDelayed(new Runnable() {
       @Override
-      public void onClick(View v) {
-        gameLayout.setBackgroundColor(Color.BLACK);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-          @Override
-          public void run() {
-            gameLayout.setBackgroundColor(Color.BLUE);
-            reactionTimer.startTimer();
-          }
-        }, nextInt(1000, 10000));
+      public void run() {
+        gameLayout.setBackgroundColor(Color.BLUE);
+        reactionTimer.startTimer();
       }
-    });
+    }, nextInt(1000, 10000));
 
-    scoreButton = ((Button) findViewById(R.id.button_score));
-    scoreButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        startActivity(new Intent(GameActivity.this, ScoreActivity.class));
-      }
-    });
+  }
+
+  @OnClick(R.id.button_score)
+  public void showScore() {
+    startActivity(new Intent(GameActivity.this, ScoreActivity.class));
   }
 
   @Override
