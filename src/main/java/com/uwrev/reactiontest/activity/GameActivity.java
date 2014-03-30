@@ -1,17 +1,14 @@
 package com.uwrev.reactiontest.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import com.uwrev.reactiontest.ForApplication;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.Timer;
 
@@ -20,7 +17,6 @@ import java.util.Random;
 
 public class GameActivity extends ReactionBaseActivity {
 
-  @Inject @ForApplication Context application;
   @Inject Timer reactionTimer;
 
   private static Random random = new Random();
@@ -39,7 +35,7 @@ public class GameActivity extends ReactionBaseActivity {
   @OnClick(R.id.game_background)
   public void updateScore() {
     reactionTimer.stopTimer();
-    gameTime.setText(reactionTimer.getLastTimeMs() + "ms");
+    gameTime.setText("Average " + reactionTimer.getAverageTimeMs() + "ms");
   }
 
   @OnClick(R.id.button_start_game)

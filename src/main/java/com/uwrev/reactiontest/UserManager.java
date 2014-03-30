@@ -15,7 +15,6 @@ import javax.inject.Singleton;
 @Singleton
 public class UserManager {
 
-
   public static final String TAG = "UserManager";
 
   RevUser user;

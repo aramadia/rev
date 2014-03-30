@@ -51,4 +51,18 @@ public class ReactionTimer implements Timer {
     return times;
   }
 
+  @Override
+  public long getAverageTimeMs() {
+    if (times.isEmpty()) {
+      return 0;
+    }
+
+    long total = 0;
+    for (Long time : times) {
+      total += time;
+    }
+
+    return total / times.size();
+  }
+
 }

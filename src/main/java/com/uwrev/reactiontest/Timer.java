@@ -32,4 +32,9 @@ public interface Timer {
    */
   public List<Long> getTimes();
 
+  /**
+   * @return The average time in ms
+   */
+  public long getAverageTimeMs();
+
 }
