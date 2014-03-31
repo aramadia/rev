@@ -26,6 +26,7 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
   @InjectView(R.id.pager) ViewPager pager;
   private ActionBar actionBar;
+  private MyAdapter pagerAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +36,25 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
     ButterKnife.inject(this);
 
-    Fragment fragment = new GameFragment();
-    Fragment fragment1 = new ScoreFragment();
-
     ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-    fragments.add(fragment);
-    fragments.add(fragment1);
+    fragments.add(new GameFragment());
+    fragments.add(new ScoreFragment());
+
+    pagerAdapter = new MyAdapter(getSupportFragmentManager(), fragments);
 
     actionBar = getSupportActionBar();
     actionBar.setHomeButtonEnabled(false);
     actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
     // Adding Tabs
-    for (Fragment frag : fragments) {
+    for (int i = 0; i < fragments.size(); i++) {
       actionBar.addTab(
           actionBar.newTab()
               .setTabListener(this)
-              .setText("1"));
+              .setText(pagerAdapter.getPageTitle(i)));
     }
 
-    pager.setAdapter(new MyAdapter(getSupportFragmentManager(), fragments));
+    pager.setAdapter(pagerAdapter);
   }
 
   @Override
@@ -93,7 +93,16 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return String.valueOf(position);
+      Fragment fragment = fragments.get(position);
+      if (fragment instanceof GameFragment) {
+        return "Game";
+      }
+
+      if (fragment instanceof ScoreFragment) {
+        return "Score";
+      }
+
+      return "Unknown";
     }
   }
 
