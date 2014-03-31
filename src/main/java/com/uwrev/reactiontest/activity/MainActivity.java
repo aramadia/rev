@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.fragment.GameFragment;
+import com.uwrev.reactiontest.fragment.ScoreFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,8 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
     ButterKnife.inject(this);
 
-    Fragment fragment = new MyFragment();
-    Fragment fragment1 = new MyFragment();
+    Fragment fragment = new GameFragment();
+    Fragment fragment1 = new ScoreFragment();
 
     ArrayList<Fragment> fragments = new ArrayList<Fragment>();
     fragments.add(fragment);
