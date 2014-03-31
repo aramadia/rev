@@ -61,7 +61,7 @@ public class GameActivity extends ReactionBaseActivity {
     // Lets submit a dummy score here too.
     RevScore highScore = new RevScore();
 
-    highScore.setScore((int)(Math.random() * 100));
+    highScore.setScore((int)(Math.random() * 1000));
     highScore.setDate(new Date());
     highScore.setGameMode("default");
 

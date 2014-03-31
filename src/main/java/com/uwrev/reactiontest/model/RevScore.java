@@ -29,4 +29,9 @@ public class RevScore extends ParseObject {
 
   public String getGameMode() { return getString(GAME_MODE); }
   public void setGameMode(String value) { put(GAME_MODE, value); }
+
+  @Override
+  public String toString() {
+    return "Score: " + getScore();
+  }
 }
