@@ -7,9 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.uwrev.reactiontest.R;
@@ -26,7 +23,7 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
   @InjectView(R.id.pager) ViewPager pager;
   private ActionBar actionBar;
-  private MyAdapter pagerAdapter;
+  private ReactionPagerAdapter pagerAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,7 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
     fragments.add(new GameFragment());
     fragments.add(new ScoreFragment());
 
-    pagerAdapter = new MyAdapter(getSupportFragmentManager(), fragments);
+    pagerAdapter = new ReactionPagerAdapter(getSupportFragmentManager(), fragments);
 
     actionBar = getSupportActionBar();
     actionBar.setHomeButtonEnabled(false);
@@ -51,7 +48,8 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
       actionBar.addTab(
           actionBar.newTab()
               .setTabListener(this)
-              .setText(pagerAdapter.getPageTitle(i)));
+              .setText(pagerAdapter.getPageTitle(i))
+      );
     }
 
     pager.setAdapter(pagerAdapter);
@@ -72,11 +70,11 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
   public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
   }
 
-  public static class MyAdapter extends FragmentPagerAdapter {
+  public static class ReactionPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragments;
 
-    public MyAdapter(FragmentManager fm, List<Fragment> fragments) {
+    public ReactionPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
       super(fm);
       this.fragments = fragments;
     }
@@ -104,15 +102,5 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
       return "Unknown";
     }
-  }
-
-  public static class MyFragment extends Fragment {
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      View v = inflater.inflate(R.layout.myfragment_layout, container, false);
-      return v;
-    }
-
   }
 }
