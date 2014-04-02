@@ -68,7 +68,7 @@ public class UserManager {
     String userId = "Guest" + numId;
 
     user.setUsername(userId);
-    user.setVisiblerName(userId);
+    user.setVisibleName(userId);
 
 
     user.signUpInBackground(new SignUpCallback() {

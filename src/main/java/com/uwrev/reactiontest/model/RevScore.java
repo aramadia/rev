@@ -10,10 +10,10 @@ import java.util.Date;
 @ParseClassName("RevScore")
 public class RevScore extends ParseObject {
 
-  private static final String SCORE = "score";
-  private static final String USER = "user";
-  private static final String DATE = "date";
-  private static final String GAME_MODE = "gameMode";
+  public static final String SCORE = "score";
+  public static final String USER = "user";
+  public static final String DATE = "date";
+  public static final String GAME_MODE = "gameMode";
 
 
   public int getScore() {

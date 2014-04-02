@@ -35,7 +35,7 @@ public class RevUser extends ParseUser {
   public String getVisibleName() {
     return getString(VISIBLE_NAME);
   }
-  public void setVisiblerName(String value) {
+  public void setVisibleName(String value) {
     put(VISIBLE_NAME, value);
   }
   public int getAge() {

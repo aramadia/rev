@@ -13,6 +13,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.model.RevScore;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class ScoreActivity extends ListActivity {
    // List<ParseObject> scoreList;
 
     ParseQuery<ParseObject> query = ParseQuery.getQuery("RevScore");
+    query.include(RevScore.USER);
     query.findInBackground(new FindCallback<ParseObject>() {
       public void done(List<ParseObject> scoreList, ParseException e) {
         if (e == null) {
