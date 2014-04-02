@@ -44,7 +44,7 @@ public class UserManager {
     if (!user.isAuthenticated()) {
       Log.e(TAG, "Error; user isn't authenticated");
     }
-    score.setUserId(user.getObjectId());
+    score.setUser(user);
 
     score.saveInBackground();
 

@@ -1,7 +1,9 @@
 package com.uwrev.reactiontest.model;
 
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.Date;
 
@@ -9,7 +11,7 @@ import java.util.Date;
 public class RevScore extends ParseObject {
 
   private static final String SCORE = "score";
-  private static final String USER_ID = "userId";
+  private static final String USER = "user";
   private static final String DATE = "date";
   private static final String GAME_MODE = "gameMode";
 
@@ -21,8 +23,8 @@ public class RevScore extends ParseObject {
     put(SCORE, value);
   }
 
-  public String getUserId() { return getString(USER_ID); }
-  public void setUserId(String value) { put(USER_ID, value); }
+  public RevUser getUser() { return (RevUser)get(USER); }
+  public void setUser(RevUser value) { put(USER, value); }
 
   public Date getDate() { return getDate(DATE); }
   public void setDate(Date value) { put(DATE, value); }
@@ -32,6 +34,15 @@ public class RevScore extends ParseObject {
 
   @Override
   public String toString() {
-    return "Score: " + getScore();
+    try {
+      RevUser user = getUser();
+      user.fetchIfNeeded();
+
+      return "Score: " + getScore() + " by " + user.getVisibleName();
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    return "Failed to network";
   }
+
 }
