@@ -2,7 +2,6 @@ package com.uwrev.reactiontest;
 
 import com.uwrev.reactiontest.activity.GameActivity;
 import com.uwrev.reactiontest.activity.MainActivity;
-import com.uwrev.reactiontest.fragment.GameFragment;
 import dagger.Module;
 import dagger.Provides;
 

@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.uwrev.reactiontest.R;
+import com.uwrev.reactiontest.ReactionApplication;
 import com.uwrev.reactiontest.fragment.GameFragment;
 import com.uwrev.reactiontest.fragment.ScoreFragment;
 
@@ -35,7 +36,11 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
     ArrayList<Fragment> fragments = new ArrayList<Fragment>();
     fragments.add(new GameFragment());
-    fragments.add(new ScoreFragment());
+    ScoreFragment scoreFragment = new ScoreFragment();
+
+    // THis is fucking retarded.
+    ((ReactionApplication) getApplication()).inject(scoreFragment);
+    fragments.add(scoreFragment);
 
     pagerAdapter = new ReactionPagerAdapter(getSupportFragmentManager(), fragments);
 

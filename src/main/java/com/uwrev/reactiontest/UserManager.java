@@ -20,6 +20,10 @@ public class UserManager {
 
   RevUser user;
 
+  public RevUser getUser() {
+    return user;
+  }
+
   public void createParseUser() {
     // First check if there is a current user
     user = (RevUser) ParseUser.getCurrentUser();
@@ -32,6 +36,10 @@ public class UserManager {
     } else {
       Log.v(TAG, "Reusing user " + user.getUsername());
     }
+  }
+
+  public void changeName(String newName) {
+    user.setVisibleName(newName);
   }
 
   /**
