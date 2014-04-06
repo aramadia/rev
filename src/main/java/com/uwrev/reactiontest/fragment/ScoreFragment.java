@@ -1,11 +1,14 @@
 package com.uwrev.reactiontest.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import butterknife.ButterKnife;
@@ -15,7 +18,6 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.uwrev.reactiontest.R;
-import com.uwrev.reactiontest.ReactionApplication;
 import com.uwrev.reactiontest.UserManager;
 import com.uwrev.reactiontest.adapter.ScoreAdapter;
 import com.uwrev.reactiontest.model.RevScore;
@@ -62,6 +64,36 @@ public class ScoreFragment extends Fragment {
     userManager.reportScore(highScore);
   }
 
+  @OnClick(R.id.button_change_name)
+  public void changeName() {
+    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+    alert.setTitle("Change your username");
+    alert.setMessage("Enter your new name:");
+
+// Set an EditText view to get user input
+    final EditText input = new EditText(getActivity());
+    input.setText(userManager.getUser().getVisibleName());
+
+    alert.setView(input);
+
+    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int whichButton) {
+        String value = input.getText().toString();
+        // Do something with value!
+        userManager.changeName(value);
+      }
+    });
+
+    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int whichButton) {
+        // Canceled.
+      }
+    });
+
+    alert.show();
+
+  }
 
   private void getScoresAsync() {
     scoreList.setVisibility(View.GONE);

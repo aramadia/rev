@@ -12,6 +12,12 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="Add Score!"/>
+  <Button
+      android:id="@+id/button_change_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@+id/button_add_score"
+      android:text="Change name"/>
   <ProgressBar
       android:id="@+id/progress_spinner"
       android:layout_width="wrap_content"
