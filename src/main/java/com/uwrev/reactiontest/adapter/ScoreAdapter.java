@@ -69,7 +69,7 @@ public class ScoreAdapter extends BaseAdapter {
   public void setScores(List<RevScore> scoreList) {
     scores.clear();
     scores.addAll(scoreList);
-    Collections.sort(scores, scoreComparator);
+    Collections.sort(scores, Collections.reverseOrder(scoreComparator));
     notifyDataSetChanged();
   }
 
