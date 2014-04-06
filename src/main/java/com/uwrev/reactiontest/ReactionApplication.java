@@ -17,8 +17,7 @@ public class ReactionApplication extends Application {
 
   public static final String TAG = "ReactionApplication";
 
-  @Inject
-  UserManager manager;
+  @Inject UserManager manager;
 
   @Override
   public void onCreate() {
@@ -31,10 +30,7 @@ public class ReactionApplication extends Application {
     ParseObject.registerSubclass(RevUser.class);
     ParseObject.registerSubclass(RevScore.class);
 
-    Parse.initialize(this, getString(R.string.parse_application_id),
-        getString(R.string.parse_client_key));
-
-    //createParseUser();
+    Parse.initialize(this, getString(R.string.parse_application_id), getString(R.string.parse_client_key));
 
     manager.createParseUser();
 
@@ -53,17 +49,6 @@ public class ReactionApplication extends Application {
 
   public void inject(Object object) {
     graph.inject(object);
-  }
-
-
-
-  private void testParse() {
-    ParseObject gameScore = new ParseObject("GameScore");
-    gameScore.put("score", 1337);
-    gameScore.put("playerName", "Sean Plott");
-    gameScore.put("cheatMode", false);
-    gameScore.put("facebookId", "awefawef");
-    gameScore.saveInBackground();
   }
 
 }

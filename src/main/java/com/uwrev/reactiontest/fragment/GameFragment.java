@@ -25,23 +25,70 @@ public class GameFragment extends ReactionBaseFragment {
 
   @Inject Timer reactionTimer;
 
+  private enum GameState {
+
+    START_STATE,
+    WAIT_STATE,
+    TOO_SOON_STATE,
+    CLICK_STATE,
+    RESULT_STATE
+
+  }
+
+  private GameState gameState;
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.game_layout, container, false);
 
     ButterKnife.inject(this, root);
 
-    averageScore.setText("");
-    numberOfTries.setText("");
-    startText.setVisibility(View.VISIBLE);
-    startText.setText("Tap to Start");
+    gameState = GameState.START_STATE;
+
+    updateState();
 
     return root;
   }
 
+  private void updateState() {
+    switch (gameState) {
+      case START_STATE:
+//        averageScore.setText("");
+//        numberOfTries.setText("");
+//        startText.setVisibility(View.VISIBLE);
+//        startText.setText("Tap to Start");
+//        reactionTimer.reset();
+        break;
+      case WAIT_STATE:
+        break;
+      case TOO_SOON_STATE:
+        break;
+      case CLICK_STATE:
+        break;
+      case RESULT_STATE:
+        break;
+    }
+
+  }
+
   @OnClick(R.id.game_background)
   public void gameBackgroundClick() {
-    // do the logic here
+    switch (gameState) {
+      case START_STATE:
+//        gameState = GameState.WAIT_STATE;
+//        updateState();
+        break;
+      case WAIT_STATE:
+//        gameState = GameState.TOO_SOON_STATE;
+//        updateState();
+        break;
+      case TOO_SOON_STATE:
+        break;
+      case CLICK_STATE:
+        break;
+      case RESULT_STATE:
+        break;
+    }
   }
 
 }
