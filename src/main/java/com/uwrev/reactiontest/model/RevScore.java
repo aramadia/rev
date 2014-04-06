@@ -3,7 +3,6 @@ package com.uwrev.reactiontest.model;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 import java.util.Date;
 
@@ -32,6 +31,7 @@ public class RevScore extends ParseObject {
   public String getGameMode() { return getString(GAME_MODE); }
   public void setGameMode(String value) { put(GAME_MODE, value); }
 
+  // todo fix this: fetch in toString, wtfx
   @Override
   public String toString() {
     try {
