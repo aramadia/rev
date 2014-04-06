@@ -66,9 +66,6 @@ public class GameActivity extends ReactionBaseActivity {
     highScore.setGameMode("default");
 
     userManager.reportScore(highScore);
-
-
-    startActivity(new Intent(GameActivity.this, ScoreActivity.class));
   }
 
   @Override
