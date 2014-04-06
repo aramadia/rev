@@ -11,6 +11,8 @@ import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.model.RevScore;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ import java.util.List;
 public class ScoreAdapter extends BaseAdapter {
 
   private final List<RevScore> scores = new ArrayList<RevScore>();
+  private final Comparator<RevScore> scoreComparator = new LowToHighScoreComparator();
   private final Context context;
 
   public ScoreAdapter(Context context) {
@@ -66,6 +69,16 @@ public class ScoreAdapter extends BaseAdapter {
   public void setScores(List<RevScore> scoreList) {
     scores.clear();
     scores.addAll(scoreList);
+    Collections.sort(scores, scoreComparator);
     notifyDataSetChanged();
+  }
+
+  private class LowToHighScoreComparator implements Comparator<RevScore> {
+
+    // todo: naive sorting, should also compare date if scores are the same etc
+    @Override
+    public int compare(RevScore lhs, RevScore rhs) {
+      return Integer.valueOf(lhs.getScore()).compareTo(rhs.getScore());
+    }
   }
 }
