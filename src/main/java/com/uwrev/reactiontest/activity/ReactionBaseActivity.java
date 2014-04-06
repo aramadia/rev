@@ -9,10 +9,10 @@ import com.uwrev.reactiontest.ReactionApplication;
  */
 
 public abstract class ReactionBaseActivity extends ActionBarActivity {
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+      @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    // Perform injection so that when this call returns all dependencies will be available for use.
-    ((ReactionApplication) getApplication()).inject(this);
+        // Perform injection so that when this call returns all dependencies will be available for use.
+        ((ReactionApplication) getApplication()).inject(this);
   }
 }
