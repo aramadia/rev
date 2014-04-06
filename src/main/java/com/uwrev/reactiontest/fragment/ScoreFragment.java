@@ -3,7 +3,6 @@ package com.uwrev.reactiontest.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +28,7 @@ import java.util.List;
 /**
  * Created by Joshua Lauer
  */
-public class ScoreFragment extends Fragment {
+public class ScoreFragment extends ReactionBaseFragment {
 
   @InjectView(R.id.score_list) ListView scoreList;
   @InjectView(R.id.progress_spinner) ProgressBar progressSpinner;

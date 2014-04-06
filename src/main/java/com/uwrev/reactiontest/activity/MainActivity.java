@@ -36,11 +36,7 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
     ArrayList<Fragment> fragments = new ArrayList<Fragment>();
     fragments.add(new GameFragment());
-    ScoreFragment scoreFragment = new ScoreFragment();
-
-    // THis is fucking retarded.
-    ((ReactionApplication) getApplication()).inject(scoreFragment);
-    fragments.add(scoreFragment);
+    fragments.add(new ScoreFragment());
 
     pagerAdapter = new ReactionPagerAdapter(getSupportFragmentManager(), fragments);
 
