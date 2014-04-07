@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <color name="neutral_background">#009999</color>
+  <color name="wait_background">#000099</color>
+  <color name="error_background">#990000</color>
+  <color name="click_background">#009900</color>
 </resources>

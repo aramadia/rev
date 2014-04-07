@@ -13,6 +13,7 @@ import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.Timer;
 
 import javax.inject.Inject;
+import java.util.Random;
 
 /**
  * Created by Joshua Lauer
@@ -26,6 +27,10 @@ public class GameFragment extends ReactionBaseFragment {
 
   @Inject Timer reactionTimer;
 
+  private static Random random = new Random();
+  private static final int MIN_WAIT_TIME_MS = 1000;
+  private static final int MAX_WAIT_TIME_MS = 3000;
+
   enum GameState {
     START_STATE,
     WAIT_STATE,
@@ -34,15 +39,13 @@ public class GameFragment extends ReactionBaseFragment {
     RESULT_STATE
   }
 
-  private GameState gameState;
+  private GameState gameState = GameState.START_STATE;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.game_layout, container, false);
 
     ButterKnife.inject(this, root);
-
-    gameState = GameState.START_STATE;
 
     updateState();
 
@@ -52,13 +55,11 @@ public class GameFragment extends ReactionBaseFragment {
   private void updateState() {
     switch (gameState) {
       case START_STATE:
-//        averageScore.setText("");
-//        numberOfTries.setText("");
-//        startText.setVisibility(View.VISIBLE);
-//        startText.setText("Tap to Start");
-//        reactionTimer.reset();
+        updateCommonUI(R.color.neutral_background, "Tap to Start");
+        reactionTimer.reset();
         break;
       case WAIT_STATE:
+        updateCommonUI(R.color.wait_background, "Wait for Green");
         Handler handler = new Handler();
         handler.postDelayed(
             new Runnable() {
@@ -67,15 +68,18 @@ public class GameFragment extends ReactionBaseFragment {
                 gameState = GameState.CLICK_STATE;
                 updateState();
               }
-            }, 1000
+            }, nextInt(MIN_WAIT_TIME_MS, MAX_WAIT_TIME_MS)
         );
-
         break;
       case TOO_SOON_STATE:
+        updateCommonUI(R.color.error_background, "Too soon, try again");
         break;
       case CLICK_STATE:
+        updateCommonUI(R.color.click_background, "Touch!");
+        reactionTimer.startTimer();
         break;
       case RESULT_STATE:
+        updateCommonUI(R.color.neutral_background, reactionTimer.getLastTimeMs() + "ms\nTouch to go again");
         break;
     }
 
@@ -94,6 +98,7 @@ public class GameFragment extends ReactionBaseFragment {
         gameState = GameState.WAIT_STATE;
         break;
       case CLICK_STATE:
+        reactionTimer.stopTimer();
         gameState = GameState.RESULT_STATE;
         break;
       case RESULT_STATE:
@@ -101,10 +106,33 @@ public class GameFragment extends ReactionBaseFragment {
         break;
     }
     updateState();
-
   }
 
   public GameState getGameState() {
     return gameState;
+  }
+
+  private void updateCommonUI(int background, String mainText) {
+    setAverageScoreText(reactionTimer.getAverageTimeMs());
+    setNumberOfTriesText(reactionTimer.getTimes().size());
+    gameBackground.setBackgroundColor(getResources().getColor(background));
+    startText.setText(mainText);
+  }
+
+  private void setAverageScoreText(long score) {
+    String scoreText = "Average: " + score;
+    averageScore.setText(scoreText);
+    averageScore.setContentDescription(scoreText);
+  }
+
+
+  private void setNumberOfTriesText(int tries) {
+    String scoreText = "Tries: " + tries + " / 5";
+    numberOfTries.setText(scoreText);
+    numberOfTries.setContentDescription(scoreText);
+  }
+
+  private int nextInt(int low, int high) {
+    return random.nextInt(high - low) + low;
   }
 }

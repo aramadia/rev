@@ -15,6 +15,9 @@
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_alignParentTop="true"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="2dp"
       android:textColor="@android:color/white"
       />
 
@@ -24,6 +27,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/average_score"
       android:layout_alignParentRight="true"
+      android:layout_marginRight="5dp"
       android:textColor="@android:color/white"
       />
 
@@ -32,8 +36,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
+      android:gravity="center"
       android:textColor="@android:color/white"
-      android:textSize="20sp"
+      android:textSize="28sp"
       />
 
 </RelativeLayout>
