@@ -1,6 +1,5 @@
 package com.uwrev.reactiontest;
 
-import com.uwrev.reactiontest.activity.GameActivity;
 import com.uwrev.reactiontest.activity.MainActivity;
 import com.uwrev.reactiontest.fragment.GameFragment;
 import com.uwrev.reactiontest.fragment.ScoreFragment;
@@ -14,7 +13,6 @@ import javax.inject.Singleton;
  */
 @Module(
     injects = {
-        GameActivity.class,
         MainActivity.class,
         GameFragment.class,
         ScoreFragment.class,

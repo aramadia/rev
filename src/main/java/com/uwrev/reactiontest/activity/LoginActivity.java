@@ -44,7 +44,7 @@ public class LoginActivity extends Activity {
     gameButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(LoginActivity.this, GameActivity.class));
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
       }
     });
 
