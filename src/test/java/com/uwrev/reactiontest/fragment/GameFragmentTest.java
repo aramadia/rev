@@ -89,4 +89,28 @@ public class GameFragmentTest {
     assertThat(gameFragment.getGameState(), is(GameFragment.GameState.WAIT_STATE));
   }
 
+  @Test
+  public void shouldNotUpdateUIAfterEarlyPress() throws Exception {
+    GameFragment gameFragment = new GameFragment();
+    startFragment(gameFragment);
+
+    assertThat(gameFragment.getGameState(), is(GameFragment.GameState.START_STATE));
+
+    View gameBackground = gameFragment.getView().findViewById(R.id.game_background);
+
+    // starts the game
+    gameBackground.performClick();
+
+    assertThat(gameFragment.getGameState(), is(GameFragment.GameState.WAIT_STATE));
+
+    // pressed before the color changed
+    gameBackground.performClick();
+
+    assertThat(gameFragment.getGameState(), is(GameFragment.GameState.TOO_SOON_STATE));
+
+    Robolectric.runUiThreadTasksIncludingDelayedTasks();
+
+    assertThat(gameFragment.getGameState(), is(GameFragment.GameState.TOO_SOON_STATE));
+  }
+
 }

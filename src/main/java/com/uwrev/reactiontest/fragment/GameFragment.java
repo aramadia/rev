@@ -40,6 +40,7 @@ public class GameFragment extends ReactionBaseFragment {
   }
 
   private GameState gameState = GameState.START_STATE;
+  private int clicks = 0;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,14 +62,7 @@ public class GameFragment extends ReactionBaseFragment {
       case WAIT_STATE:
         updateCommonUI(R.color.wait_background, "Wait for Green");
         Handler handler = new Handler();
-        handler.postDelayed(
-            new Runnable() {
-              @Override
-              public void run() {
-                gameState = GameState.CLICK_STATE;
-                updateState();
-              }
-            }, nextInt(MIN_WAIT_TIME_MS, MAX_WAIT_TIME_MS)
+        handler.postDelayed(new GameRunnable(clicks), nextInt(MIN_WAIT_TIME_MS, MAX_WAIT_TIME_MS)
         );
         break;
       case TOO_SOON_STATE:
@@ -87,6 +81,7 @@ public class GameFragment extends ReactionBaseFragment {
 
   @OnClick(R.id.game_background)
   public void gameBackgroundClick() {
+    clicks++;
     switch (gameState) {
       case START_STATE:
         gameState = GameState.WAIT_STATE;
@@ -134,5 +129,24 @@ public class GameFragment extends ReactionBaseFragment {
 
   private int nextInt(int low, int high) {
     return random.nextInt(high - low) + low;
+  }
+
+  private class GameRunnable implements Runnable {
+
+    private final int currentClicks;
+
+    private GameRunnable(int clicks) {
+      this.currentClicks = clicks;
+    }
+
+    @Override
+    public void run() {
+      if (currentClicks != clicks) {
+        return;
+      }
+      gameState = GameState.CLICK_STATE;
+      updateState();
+    }
+
   }
 }
