@@ -1,6 +1,7 @@
 package com.uwrev.reactiontest.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,14 +26,12 @@ public class GameFragment extends ReactionBaseFragment {
 
   @Inject Timer reactionTimer;
 
-  private enum GameState {
-
+  enum GameState {
     START_STATE,
     WAIT_STATE,
     TOO_SOON_STATE,
     CLICK_STATE,
     RESULT_STATE
-
   }
 
   private GameState gameState;
@@ -60,6 +59,17 @@ public class GameFragment extends ReactionBaseFragment {
 //        reactionTimer.reset();
         break;
       case WAIT_STATE:
+        Handler handler = new Handler();
+        handler.postDelayed(
+            new Runnable() {
+              @Override
+              public void run() {
+                gameState = GameState.CLICK_STATE;
+                updateState();
+              }
+            }, 1000
+        );
+
         break;
       case TOO_SOON_STATE:
         break;
@@ -75,20 +85,26 @@ public class GameFragment extends ReactionBaseFragment {
   public void gameBackgroundClick() {
     switch (gameState) {
       case START_STATE:
-//        gameState = GameState.WAIT_STATE;
-//        updateState();
+        gameState = GameState.WAIT_STATE;
         break;
       case WAIT_STATE:
-//        gameState = GameState.TOO_SOON_STATE;
-//        updateState();
+        gameState = GameState.TOO_SOON_STATE;
         break;
       case TOO_SOON_STATE:
+        gameState = GameState.WAIT_STATE;
         break;
       case CLICK_STATE:
+        gameState = GameState.RESULT_STATE;
         break;
       case RESULT_STATE:
+        gameState = GameState.WAIT_STATE;
         break;
     }
+    updateState();
+
   }
 
+  public GameState getGameState() {
+    return gameState;
+  }
 }
