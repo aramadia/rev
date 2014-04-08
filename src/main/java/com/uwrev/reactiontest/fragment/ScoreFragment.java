@@ -8,10 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -22,8 +20,6 @@ import com.parse.*;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.ReactionApplication;
 import com.uwrev.reactiontest.UserManager;
-import com.uwrev.reactiontest.activity.MainActivity;
-import com.uwrev.reactiontest.activity.UserDetailsActivity;
 import com.uwrev.reactiontest.adapter.ScoreAdapter;
 import com.uwrev.reactiontest.model.RevScore;
 
@@ -37,6 +33,8 @@ import java.util.List;
  */
 public class ScoreFragment extends ReactionBaseFragment {
 
+  private static final String TAG = "ScoreFragment";
+  public static final int FACEBOOK_ACTIVITY_CODE = 100;
   @InjectView(R.id.score_list) ListView scoreList;
   @InjectView(R.id.progress_spinner) ProgressBar progressSpinner;
   @Inject UserManager userManager;
@@ -141,7 +139,6 @@ public class ScoreFragment extends ReactionBaseFragment {
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
   }
 
   private void onLoginButtonClicked() {
@@ -149,7 +146,7 @@ public class ScoreFragment extends ReactionBaseFragment {
        getActivity(), "", "Logging in...", true);
     List<String> permissions = Arrays.asList("basic_info", "user_about_me",
         "user_relationships", "user_birthday", "user_location");
-    ParseFacebookUtils.logIn(permissions, getActivity(), new LogInCallback() {
+    ParseFacebookUtils.logIn(permissions, getActivity(), FACEBOOK_ACTIVITY_CODE, new LogInCallback() {
       @Override
       public void done(ParseUser user, ParseException err) {
         ScoreFragment.this.progressDialog.dismiss();

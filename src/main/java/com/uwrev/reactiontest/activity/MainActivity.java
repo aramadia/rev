@@ -1,5 +1,6 @@
 package com.uwrev.reactiontest.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,8 +8,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.parse.ParseFacebookUtils;
 import com.uwrev.reactiontest.R;
 import com.uwrev.reactiontest.ReactionApplication;
 import com.uwrev.reactiontest.fragment.GameFragment;
@@ -22,6 +25,7 @@ import java.util.List;
  */
 public class MainActivity extends ReactionBaseActivity implements ActionBar.TabListener {
 
+  private static final String TAG = "MainActivity";
   @InjectView(R.id.pager) ViewPager pager;
   private ActionBar actionBar;
   private ReactionPagerAdapter pagerAdapter;
@@ -103,5 +107,16 @@ public class MainActivity extends ReactionBaseActivity implements ActionBar.TabL
 
       return "Unknown";
     }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == ScoreFragment.FACEBOOK_ACTIVITY_CODE) {
+
+      Log.d(TAG, "onActivityResult called");
+      ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
+    }
+
   }
 }
