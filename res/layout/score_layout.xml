@@ -18,6 +18,12 @@
       android:layout_height="wrap_content"
       android:layout_toRightOf="@+id/button_add_score"
       android:text="Change name"/>
+  <Button
+      android:id="@+id/button_facebook"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@+id/button_change_name"
+      android:text="Facebook"/>
   <ProgressBar
       android:id="@+id/progress_spinner"
       android:layout_width="wrap_content"
